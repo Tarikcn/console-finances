@@ -86,3 +86,13 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+//The total number of months included in the dataset.
+console.log("Total months:", finances.length);
+
+
+// Amount of profit over entire period
+const financesArray = finances.map((el) => el[1]);
+const total = financesArray.reduce(
+    (accVal, curVal) => accVal + curVal,
+    0);
+console.log('Total : ', total);
