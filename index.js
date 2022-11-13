@@ -96,3 +96,10 @@ const total = financesArray.reduce(
     (accVal, curVal) => accVal + curVal,
     0);
 console.log('Total : ', total);
+
+// Total and average
+var sum = 0
+for (var i = finances.length - 1; i >= 1; i--){ //we end at 1 because there is nothing to subtract from index 0
+     sum += finances[i] - finances[i-1];
+}
+console.log('average:', sum/Total Months);
