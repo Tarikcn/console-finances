@@ -87,19 +87,28 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 //The total number of months included in the dataset.
-console.log("Total months:", finances.length);
+console.log("Total Months:", finances.length);
 
 
-// Amount of profit over entire period
+// The net total amount of Profit/Losses over the entire period.
 const financesArray = finances.map((el) => el[1]);
 const total = financesArray.reduce(
     (accVal, curVal) => accVal + curVal,
     0);
 console.log('Total : ', total);
 
-// Total and average
-var sum = 0
-for (var i = finances.length - 1; i >= 1; i--){ //we end at 1 because there is nothing to subtract from index 0
-     sum += finances[i] - finances[i-1];
+// The average of the **changes** in Profit/Losses over the entire period.
+let profDiffsList = [];
+let totalProfSum = 0;
+let prevProf = 0;
+for (let i = 0; i < finances.length; i++) {
+  let currProff = finances[i][1];
+  totalProfSum += currProff;
+  profDiffsList.push(currProff - prevProf);
+  prevProf = currProff;
 }
-console.log(sum);
+let avgProffDiff = (
+  profDiffsList.reduce((a, b) => a + b) / profDiffsList.length
+).toFixed(2);
+console.log ("average change:" , avgProffDiff)
+
