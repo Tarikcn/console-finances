@@ -112,3 +112,24 @@ let avgProffDiff = (
 ).toFixed(2);
 console.log ("average change:" , avgProffDiff)
 
+//Greatest Increase and Greatest decrease
+let grtInc = 0;
+let grtIncIndex = 0;
+let grtDecr = 0;
+let grtDecrIndex = 0;
+for (let i = 0; i < finances.length; i++) {
+  let currProff = finances[i][1];
+  totalProfSum += currProff;
+profDiffsList.push(currProff - prevProf);
+  finances[i].push(currProff - prevProf);
+  if (currProff - prevProf > grtInc) {
+    grtInc = currProff;
+    grtIncIndex = i;
+  } else if (currProff - prevProf < grtDecr) {
+    grtDecr = currProff;
+    grtDecrIndex = i;
+  }
+  prevProf = currProff;
+}
+console.log ("Greatest Increse:", grtDecr)
+console.log ("Greatest Decrease:",grtInc )
